@@ -2,21 +2,35 @@
 % Please edit documentation in R/events.R
 \name{eq}
 \alias{eq}
-\title{Declination of sun at the equinoxes}
+\title{Declination of the sun at the Equinox}
 \usage{
-eq(bh = NULL)
+eq(loc = FALSE, parallax = 0.00224, altitude = 0, verbose = TRUE)
 }
 \arguments{
-\item{bh}{\emph{NULL} parameter. Can be left empty.}
+\item{loc}{(Optional) This can be either the latitude of the
+location, or a \emph{skyscapeR.horizon} object. If missing or \emph{FALSE},
+function will output geocentric declination.}
+
+\item{parallax}{(Optional) Average parallax value for the sun.
+Defaults to 0.00224.}
+
+\item{altitude}{(Optional) Altitude of the sun. Defaults to 0 degrees.}
+
+\item{verbose}{(Optional) Boolean to control output of warnings and messages.
+Defaults to TRUE.}
 }
 \description{
-This function always returns a value of zero, which is the
-declination of the sun on the day of the (astronomical)
-equinoxes.
+This function calculates the declination of the sun
+at the astronomical equinox with corrected average parallax.
 }
 \examples{
+# Equinoctial geocentric declination:
 eq()
+
+# Topocentric declination for same year and latitude of 50 degrees N:
+eq(loc=50)
 }
 \seealso{
-\code{\link{jS}}, \code{\link{dS}}, \code{\link{zenith}}, \code{\link{antizenith}}
+\code{\link{obliquity}}, \code{\link{jS}}, \code{\link{eq}},
+\code{\link{zenith}}, \code{\link{antizenith}}, \code{\link{spatial.equinox}}, \code{\link{parallax.corr}}
 }

@@ -8,12 +8,12 @@ reduct.compass(loc, mag.az, date, magdec, alt, name, ID, HWT.ID)
 }
 \arguments{
 \item{loc}{Location, either a \emph{skyscapeR.object} or a vector
-containing the latitude and longitude of location, in this order.}
+containing the latitude, longitude and elevation of location, in this order.}
 
 \item{mag.az}{Array of magnetic azimuth measurements.}
 
 \item{date}{(Optional) Date of measurements as a string in the format: 'YYYY/MM/DD'.
-Only necessary is \emph{magdec} is not given.}
+Only necessary if \emph{magdec} is not given.}
 
 \item{magdec}{(Optional) Magnetic declination, if known.}
 
@@ -33,7 +33,7 @@ This function calculates the true azimuth of a structure measured with
 a compass.
 }
 \examples{
-loc <- c(35,-7)
+loc <- c(35,-7, 100)
 mag.az <- c(89.5, 105, 109.5)
 data <- reduct.compass(loc, mag.az, "2016/04/02")
 
@@ -41,7 +41,7 @@ data <- reduct.compass(loc, mag.az, "2016/04/02")
 data <- reduct.compass(loc, mag.az, "2016/04/02", alt=c(1,2,0))
 
 # Alternatively, the altitude can be automatically retrieved from a horizon profile:
-hor <- download.HWT('NML6GMSX')
+hor <- downloadHWT('HIFVTBGK')
 data <- reduct.compass(hor, mag.az, "2016/04/02")
 }
 \seealso{

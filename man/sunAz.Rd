@@ -4,25 +4,31 @@
 \alias{sunAz}
 \title{Returns the azimuth of the sun at a given time from a specific location}
 \usage{
-sunAz(loc, time, timezone)
+sunAz(loc, time, timezone, limb, alt = F)
 }
 \arguments{
 \item{loc}{Location, either a \emph{skyscapeR.object} or a vector
-containing the latitude and longitude of location, in this order.}
+containing the latitude, longitude and elevation of location, in this order.}
 
 \item{time}{String containing the date and time in the following format:
 "YYYY-MM-DD HH:MM:SS"}
 
-\item{timezone}{Timezone of input either as a known acronym (eg. "GMT", "CET") or
-a string with continent followed by country capital (eg. "Europe/London").}
+\item{timezone}{Timezone of input either as a known acronym (e.g. "GMT", "CET") or
+a string with continent followed by country capital (e.g. "Europe/London").}
+
+\item{limb}{(Optional) Measured limb of the sun. Options are \emph{left}, \emph{right}.
+If missing the center of the sun will be output.}
+
+\item{alt}{(Optional) Boolean that triggers output of altitude of the sun at exact time.
+Default is FALSE.}
 }
 \description{
 This function returns the azimuth of the sun at a given time and location,
-useful for data reduction of theodolite measurements using the sunsight
+useful for data reduction of theodolite measurements using the sun-sight
 technique (\code{\link{reduct.theodolite}}).
 }
 \examples{
-sunAz(c(52,-3), '2017-10-04 12:32:14', 'Europe/London')
+sunAz(c(52,-3,100), '2017-10-04 12:32:14', 'Europe/London')
 }
 \seealso{
 \code{\link{reduct.theodolite}}

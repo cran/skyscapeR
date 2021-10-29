@@ -4,7 +4,7 @@
 \alias{sky.objects}
 \title{Creates a \emph{skyscapeR.object} for plotting of celestial objects at given epoch}
 \usage{
-sky.objects(names, epoch, col = "red", lty = 1, lwd = 1)
+sky.objects(names, epoch, loc = FALSE, col = "red", lty = 1, lwd = 1)
 }
 \arguments{
 \item{names}{The name(s) of the celestial object(s) or event(s) of interest.
@@ -16,7 +16,10 @@ respectively. Alternatively, custom declination values can also be used.}
 
 \item{epoch}{The year or year range (as an array) one is interested in.}
 
-\item{col}{(Optional) The colour for plotting, and differentiating these objects.
+\item{loc}{(Optional) This can be either a vector with the latitude and longitude of the
+location, or a \emph{skyscapeR.horizon} object.}
+
+\item{col}{(Optional) The color for plotting, and differentiating these objects.
 Defaults to red for all objects.}
 
 \item{lty}{(Optional) Line type (see \code{\link{par}}) used for differentiation.
@@ -31,15 +34,13 @@ plot celestial objects/events unto the many plotting functions of \emph{skyscape
 package.
 }
 \examples{
-\dontrun{
 # Create a object with solar targets for epoch range 4000-2000 BC:
-tt <- sky.objects('sun', c(-4000,-2000))
+tt <- sky.objects('solar extremes', c(-4000,-2000))
 
 # Create an object with a few stars for same epoch:
 tt <- sky.objects(c('Sirius', 'Betelgeuse', 'Antares'), c(-4000,-2000),
 col=c('white', 'red', 'orange'))
 
 # Create an object with solstices and a custom declination value:
-tt <- sky.objects(c('dS','jS', -13), c(-4000,-2000))
-}
+tt <- sky.objects(c('December Solstice','June Solstice', -13), c(-4000,-2000))
 }

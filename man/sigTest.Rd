@@ -2,43 +2,13 @@
 % Please edit documentation in R/sig-test.R
 \name{sigTest}
 \alias{sigTest}
-\title{Perform a null hypothesis significance test of a given curvigram}
+\title{(Defunct) Perform a null hypothesis significance test of a given curvigram}
 \usage{
-sigTest(curv, null.hyp, level = 0.95, type = "2-tailed", nsims = 2000,
-  ncores)
-}
-\arguments{
-\item{curv}{Object of \emph{skyscapeR.curv} format, created using \code{\link{curvigram}}}
-
-\item{null.hyp}{Object of \emph{skyscapeR.nh} format, created with one of the Null Hypothesis models
-of \emph{skyscapeR} (see See Also section below).}
-
-\item{level}{(Optional) Level of confidence for p-value calculation and output. Defaults to 0.95,
-i.e. a 95\% confidence envelope.}
-
-\item{type}{(Optional) Whether the test is to be '1-tailed' or '2-tailed'. Defaults to '2-tailed'.}
-
-\item{nsims}{(Optional) Number of simulations to run. The higher this number the slower this process will
-be, but the lower it is the less power the method has. Defaults to 2000 as a base minimum to test for
-significance at the p=0.0005 level, but the recommended value is 10,000.}
-
-\item{ncores}{(Optional) Number of processing cores to use for parallelisation. Defaults to the number of
-available cores minus 1.}
+sigTest()
 }
 \description{
-This function performs a null hypothesis significance test, for a given curvigram
-and null hypothesis and outputs a p-value as well as all the information needed for
-ancillary plotting.
-}
-\examples{
-\dontrun{
-data(RugglesRSC)
-curv <- curvigram(RugglesRSC$Dec, sd=2)
-sig <- sigTest(curv, null.hyp=nh.Uniform(c(57,2)))
-
-plotCurv(curv, signif=sig)
-}
+This function no longer works. Please use \code{\link{randomTest}} instead.
 }
 \seealso{
-\code{\link{nh.Uniform}}, \code{\link{nh.SummerFM}}, \code{\link{plotCurv}}, \code{\link{plotZscore}}
+\code{\link{randomTest}}
 }

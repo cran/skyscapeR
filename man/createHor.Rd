@@ -2,19 +2,27 @@
 % Please edit documentation in R/horizon.R
 \name{createHor}
 \alias{createHor}
-\title{Create .\emph{skyscapeR.horizon} object from Az/Alt data}
+\title{Create \emph{skyscapeR.horizon} object from Az/Alt data}
 \usage{
-createHor(az, alt, loc, name)
+createHor(az, alt, alt.unc = 0.5, loc, name = "", smooth = F, .scale = 1000)
 }
 \arguments{
 \item{az}{Array of azimuth values}
 
 \item{alt}{Array of altitude values.}
 
-\item{loc}{Location, a vector containing the latitude and longitude of
+\item{alt.unc}{(Optional) Either a single value or an array of altitude
+uncertainty.}
+
+\item{loc}{Location, a vector containing the latitude, longitude and elevation of
 the location, in this order.}
 
 \item{name}{Name of site.}
+
+\item{smooth}{Boolean to control whether to smooth horizon profile using rolling mean.
+Defaults to FALSE}
+
+\item{.scale}{Rolling mean window for smoothing. See \code{\link{createHWT}}}
 }
 \description{
 This function creates a \emph{skyscapeR.horizon} object from measurements of
@@ -24,9 +32,11 @@ azimuth and altitude.
 # Create a skyscapeR.horizon from 5 measurements:
 az <- c(0,90,180,270,360)
 alt <- c(0,5,5,0,0)
-hor <- createHor(az, alt, c(40.1,-8), 'Test')
-plotHor(hor)
+hor <- createHor(az, alt, 0.1, c(40.1,-8), 'Test')
+plot(hor)
 }
 \seealso{
-\code{\link{plotHor}}
+\code{\link{plot.skyscapeR.horizon}}
+
+\code{\link{createHWT}}, \code{\link{downloadHWT}}
 }
